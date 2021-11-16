@@ -1,0 +1,21 @@
+FROM docker-spv.artifactory.gscorp.ad/angular-cli-spv:12.0.3
+
+ENV FW angular
+ENV NAME host
+ENV PORT 3001
+ENV ROUTING true
+ENV ROUTE host
+ENV BASE_DEV_URL /
+
+WORKDIR /usr/src/app
+
+RUN npm install -g @angular-devkit/schematics-cli
+RUN npm install -g mfe-archetype
+
+USER root
+RUN schematics mfe-archetype:build-container --fw=$FW --name=$NAME --port=$PORT --routing=$ROUTING --route=$ROUTE --baseDevUrl=$BASE_DEV_URL
+
+WORKDIR /usr/src/app/fe-obe-container
+
+EXPOSE 3008
+CMD [ "npm", "start" ]

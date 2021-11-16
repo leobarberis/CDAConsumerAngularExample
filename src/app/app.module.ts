@@ -1,0 +1,28 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { PageComponent } from './page/page.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { APP_BASE_HREF } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
+import { CdaComponent } from './cda/cda.component';
+import { LazyElementsModule } from '@angular-extensions/elements';
+
+@NgModule({
+  declarations: [AppComponent, PageComponent, HomeComponent, CdaComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    MatCardModule,
+    LazyElementsModule
+  ],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/obe/' }],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule {}
